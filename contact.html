@@ -111,6 +111,36 @@
       </div>
     </div>
   </div>
+  
+  <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "contact_feedback";
+$name = "Name";
+$email = "Email";
+$num = "Phone_Number";
+$message = "Message";
+
+// Create connection
+$conn = new mysqli ($host, $dbusername, $dbpassword, $dbname);
+if (mysqli_connect_error()){
+die('Connect Error ('. mysqli_connect_errno() .') '
+. mysqli_connect_error());
+}
+else{
+$sql = "INSERT INTO customer_feedback (Name, Email, Phone_Number, Message)
+values ('$name','$email','$num','$message')";
+if ($conn->query($sql)){
+echo "New record is inserted sucessfully";
+}
+else{
+echo "Error: ". $sql ."
+". $conn->error;
+}
+$conn->close();
+?>
+  
 
   <hr>
 
